@@ -1,0 +1,28 @@
+@import '../../../assets/styles/setup/functions';
+@import '../../../assets/styles/setup/mixins';
+
+.contact-app {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - rem(155px));
+
+    @include for-narrow-layout {
+        align-items: center;
+        padding: rem(10px) 0;
+    }
+
+    @include for-normal-layout {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: unset;
+    }
+
+    .contact-actions {
+        display: flex;
+
+        @include for-narrow-layout {
+            justify-content: space-between;
+            flex-direction: column;
+        }
+    }
+}
