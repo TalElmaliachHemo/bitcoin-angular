@@ -14,3 +14,7 @@ export class Contact {
     }
 }
 
+export interface contactFilter {
+    term: string
+}
+

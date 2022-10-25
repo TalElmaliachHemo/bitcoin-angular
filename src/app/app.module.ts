@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ContactListComponent } from './cmps/contact-list/contact-list.component';
 import { ContactPreviewComponent } from './cmps/contact-preview/contact-preview.component';
 import { AppHeaderComponent } from './cmps/app-header/app-header.component';
+import { ContactFilterComponent } from './cmps/contact-filter/contact-filter.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppHeaderComponent } from './cmps/app-header/app-header.component';
     ContactAppComponent,
     ContactListComponent,
     ContactPreviewComponent,
-    AppHeaderComponent
+    AppHeaderComponent,
+    ContactFilterComponent
   ],
   imports: [
     BrowserModule,

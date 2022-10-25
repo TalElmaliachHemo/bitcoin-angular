@@ -18,11 +18,10 @@ export class ContactAppComponent implements OnInit {
   selectedContactId = ''
 
   ngOnInit(): void {
-    this.contactService.loadContacts({ term: '' })
     this.subscription = this.contactService.contacts$.subscribe(contacts => {
       this.contacts = contacts
     })
-    console.log(this.contacts)
+    this.contactService.loadContacts()
   }
 
   onRemoveContact(contactId: string) {
