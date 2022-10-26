@@ -1,0 +1,32 @@
+@import '../../../assets/styles/setup/functions';
+@import '../../../assets/styles/setup/vars';
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    >*:not(:last-child) {
+        margin-block-end: rem(15px);
+    }
+
+    img {
+        height: rem(200px);
+        width: rem(200px);
+    }
+
+    .contact-name {
+        font-size: rem(20px);
+    }
+
+    .btn-back {
+        background-color: transparent;
+        color: var(--primary-text-color);
+        border: 1px solid var(--primary-text-color);
+        border-radius: rem(5px);
+        padding: rem(5px);
+        font-size: rem(15px);
+        cursor: pointer;
+    }
+}

@@ -1,1 +1,7 @@
-<p>contact-details works!</p>
+<section class="contact-details">
+    <img [src]="contact.img" alt="contact-img" />
+    <span class="contact-name">{{ contact.name }}</span>
+    <span class="contact-email">Email: {{ contact.email }}</span>
+    <span class="contact-phone">Phone: {{ contact.phone }}</span>
+    <button class="btn-back" [routerLink]="['/contact']">Back</button>
+</section>

@@ -1,4 +1,4 @@
-<section class="contact-preview">
+<section class="contact-preview" [routerLink]="['/contact', contact._id]">
     <button class="btn-remove" (click)="onRemoveContact()">X</button>
     <img [src]="contact.img" alt="contact-img" />
     <div class="contact-data">
