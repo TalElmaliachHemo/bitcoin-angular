@@ -1,3 +1,4 @@
+import { Transaction } from './../../models/transaction.model';
 import { lastValueFrom } from 'rxjs';
 import { BitcoinService } from './../../services/bitcoin.service';
 import { UtilService } from './../../services/util.service';
@@ -20,11 +21,15 @@ export class HomeComponent implements OnInit {
   user: User = {} as User
   greeting: string = ''
   rate!: object
+  transactions!: Array<Transaction>
 
   async ngOnInit() {
     this.user = this.userService.getUser()
     this.greeting = `Hello ${this.user.name}, ${this.utilService.getGreeting()} !`
 
     this.rate = await lastValueFrom(this.bitcoinService.getRate())
+    const transactions = this.userService.getUser().transactions
+    if (transactions.length > 3) this.transactions = transactions.slice(0, 3);
+    else this.transactions = transactions;
   }
 }

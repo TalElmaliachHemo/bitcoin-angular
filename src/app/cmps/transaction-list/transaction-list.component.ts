@@ -1,4 +1,3 @@
-import { UserService } from 'src/app/services/user.service';
 import { Transaction } from './../../models/transaction.model';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -9,13 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TransactionListComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   @Input() transactions!: Array<Transaction>
 
   ngOnInit(): void {
-    this.transactions = this.userService.getUser().transactions
-    console.log(this.transactions)
   }
 
 }

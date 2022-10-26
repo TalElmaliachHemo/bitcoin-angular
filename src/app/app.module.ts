@@ -18,6 +18,7 @@ import { AddContactComponent } from './cmps/add-contact/add-contact.component';
 import { StatisticAppComponent } from './pages/statistic-app/statistic-app.component';
 import { TransactionListComponent } from './cmps/transaction-list/transaction-list.component';
 import { TransactionPreviewComponent } from './cmps/transaction-preview/transaction-preview.component';
+import { TransferFundsComponent } from './cmps/transfer-funds/transfer-funds.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TransactionPreviewComponent } from './cmps/transaction-preview/transact
     AddContactComponent,
     StatisticAppComponent,
     TransactionListComponent,
-    TransactionPreviewComponent
+    TransactionPreviewComponent,
+    TransferFundsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,5 @@
+import { Transaction } from './../models/transaction.model';
+import { Contact } from './../models/contact.model';
 import { User } from 'src/app/models/user.model';
 import { UtilService } from './util.service';
 import { StorageService } from './storage.service';
@@ -19,8 +21,30 @@ export class UserService {
     private utilService: UtilService) { }
 
   public getUser() {
-    return this.storageService.loadFromStorage('loggedinUser')|| null
-}
+    return this.storageService.loadFromStorage('loggedinUser') || null
+  }
+
+  public transferFunds(amount: number, contact: Contact) {
+    const user = this.getUser()
+    user.balance -= amount
+
+    const transaction = {
+      id: this.utilService.makeId(),
+      toId: contact._id,
+      to: contact.name,
+      at: Date.now(),
+      amount
+    }
+
+    user.transactions.unshift(transaction)
+    this.storageService.saveToStorage('loggedinUser', user)
+
+    const userId = user._id
+    const users = this.storageService.loadFromStorage('user')
+    const userIdx = users.findIndex((user: User) => user._id === userId)
+    users[userIdx] = { ...user }
+    this.storageService.saveToStorage('user', users)
+  }
 
   public loginSignup(username: string) {
     const users = this.storageService.loadFromStorage('user') || []
@@ -47,5 +71,5 @@ export class UserService {
 
   public logout() {
     this.storageService.saveToStorage('loggedinUser', null)
-}
+  }
 }
