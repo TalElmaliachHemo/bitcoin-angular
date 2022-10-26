@@ -12,6 +12,7 @@ import { AppHeaderComponent } from './cmps/app-header/app-header.component';
 import { ContactFilterComponent } from './cmps/contact-filter/contact-filter.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NaturalTypePipe } from './pipes/natural-type.pipe';
+import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NaturalTypePipe } from './pipes/natural-type.pipe';
     AppHeaderComponent,
     ContactFilterComponent,
     HomeComponent,
-    NaturalTypePipe
+    NaturalTypePipe,
+    LoginSignupComponent
   ],
   imports: [
     BrowserModule,

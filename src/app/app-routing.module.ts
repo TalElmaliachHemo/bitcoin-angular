@@ -1,3 +1,4 @@
+import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ContactAppComponent } from './pages/contact-app/contact-app.component';
 import { NgModule } from '@angular/core';
@@ -10,9 +11,8 @@ const routes: Routes = [
   //   resolve: { pet: PetResolver },
   // },
   { path: 'contact', component: ContactAppComponent },
-  {
-    path: '', component: HomeComponent
-  },
+  { path: 'login-signup', component: LoginSignupComponent },
+  { path: '', component: HomeComponent },
 ];
 
 @NgModule({

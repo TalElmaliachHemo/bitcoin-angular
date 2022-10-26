@@ -1,0 +1,8 @@
+<section class="login-signup">
+    <h1 class="title">Signup</h1>
+    <form class="login-signup-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <input autofocus class="username" name="username" [(ngModel)]="username" placeholder="Enter your fullname"
+            type="text" />
+        <button class="btn-signup" [disabled]="form.pristine">Signup</button>
+    </form>
+</section>

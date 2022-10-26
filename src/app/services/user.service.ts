@@ -1,6 +1,7 @@
+import { User } from 'src/app/models/user.model';
+import { UtilService } from './util.service';
+import { StorageService } from './storage.service';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
-import { User } from '../models/user.model';
 
 const USER = {
   _id: 'u101',
@@ -14,7 +15,33 @@ const USER = {
 })
 export class UserService {
 
-  public getUser(): User {
-    return USER
+  constructor(private storageService: StorageService,
+    private utilService: UtilService) { }
+
+  public getUser() {
+    return this.storageService.loadFromStorage('loggedinUser')|| {}
+}
+
+  public loginSignup(username: string) {
+    const users = this.storageService.loadFromStorage('user') || []
+    const userIdx = users.findIndex((user: User) => user.name === username)
+
+    if (userIdx !== -1) {
+      const user = users[userIdx]
+      this.storageService.saveToStorage('loggedinUser', user)
+      return user
+    }
+
+    const user = {
+      _id: this.utilService.makeId(),
+      name: username,
+      coins: 1500000,
+      moves: []
+    }
+
+    users.push(user)
+    this.storageService.saveToStorage('loggedinUser', user)
+    this.storageService.saveToStorage('user', users)
+    return user
   }
 }

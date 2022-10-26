@@ -18,6 +18,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.getUser()
-    this.greeting = `Hello ${this.user.name} ${this.utilService.getGreeting()}!`
+    this.greeting = `Hello ${this.user.name} ${this.utilService.getGreeting()} !`
   }
 }
