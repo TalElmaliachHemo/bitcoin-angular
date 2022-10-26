@@ -16,6 +16,8 @@ import { LoginSignupComponent } from './pages/login-signup/login-signup.componen
 import { ContactDetailsComponent } from './pages/contact-details/contact-details.component';
 import { AddContactComponent } from './cmps/add-contact/add-contact.component';
 import { StatisticAppComponent } from './pages/statistic-app/statistic-app.component';
+import { TransactionListComponent } from './cmps/transaction-list/transaction-list.component';
+import { TransactionPreviewComponent } from './cmps/transaction-preview/transaction-preview.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { StatisticAppComponent } from './pages/statistic-app/statistic-app.compo
     LoginSignupComponent,
     ContactDetailsComponent,
     AddContactComponent,
-    StatisticAppComponent
+    StatisticAppComponent,
+    TransactionListComponent,
+    TransactionPreviewComponent
   ],
   imports: [
     BrowserModule,

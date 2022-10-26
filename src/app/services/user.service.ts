@@ -35,8 +35,8 @@ export class UserService {
     const user = {
       _id: this.utilService.makeId(),
       name: username,
-      coins: 1500000,
-      moves: []
+      balance: 100,
+      transactions: []
     }
 
     users.push(user)
