@@ -19,7 +19,7 @@ export class UserService {
     private utilService: UtilService) { }
 
   public getUser() {
-    return this.storageService.loadFromStorage('loggedinUser')|| {}
+    return this.storageService.loadFromStorage('loggedinUser')|| null
 }
 
   public loginSignup(username: string) {

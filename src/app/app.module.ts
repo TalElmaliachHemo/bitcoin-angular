@@ -13,6 +13,7 @@ import { ContactFilterComponent } from './cmps/contact-filter/contact-filter.com
 import { HomeComponent } from './pages/home/home.component';
 import { NaturalTypePipe } from './pipes/natural-type.pipe';
 import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
+import { ContactDetailsComponent } from './pages/contact-details/contact-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LoginSignupComponent } from './pages/login-signup/login-signup.componen
     ContactFilterComponent,
     HomeComponent,
     NaturalTypePipe,
-    LoginSignupComponent
+    LoginSignupComponent,
+    ContactDetailsComponent
   ],
   imports: [
     BrowserModule,
