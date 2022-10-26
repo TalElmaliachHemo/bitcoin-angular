@@ -14,10 +14,10 @@ export class HomeComponent implements OnInit {
     private utilService: UtilService) { }
 
   user: User = {} as User
-  greeting: String = ''
+  greeting: string = ''
 
   ngOnInit(): void {
     this.user = this.userService.getUser()
-    this.greeting = this.utilService.getGreeting()
+    this.greeting = `Hello ${this.user.name} ${this.utilService.getGreeting()}!`
   }
 }
