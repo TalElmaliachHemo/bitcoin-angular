@@ -13,7 +13,6 @@ export class ContactAppComponent implements OnInit {
   constructor(private contactService: ContactService) { }
 
   contacts!: Contact[]
-  contacts$!: Observable<Contact[]>
   subscription!: Subscription
   selectedContactId = ''
 

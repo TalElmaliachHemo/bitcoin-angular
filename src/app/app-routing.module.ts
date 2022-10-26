@@ -1,3 +1,4 @@
+import { HomeComponent } from './pages/home/home.component';
 import { ContactAppComponent } from './pages/contact-app/contact-app.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -9,12 +10,9 @@ const routes: Routes = [
   //   resolve: { pet: PetResolver },
   // },
   { path: 'contact', component: ContactAppComponent },
-  // {
-  //   path: '', component: PetAppComponent, children: [
-  //     { path: 'edit/:id', component: PetEditComponent, resolve: { pet: PetResolver } },
-  //     { path: 'edit', component: PetEditComponent }
-  //   ]
-  // },
+  {
+    path: '', component: HomeComponent
+  },
 ];
 
 @NgModule({

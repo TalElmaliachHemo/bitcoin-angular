@@ -1,3 +1,10 @@
-<form  class="contact-filter">
-    <input [(ngModel)]="filterBy.term" (ngModelChange)="onSetFilter()"  type="text" name="term" id="term" placeholder="Search a contact">
+<form class="contact-filter">
+    <h1 class="filterBy-title">
+        <span>Filter</span>
+        your contacts by name and start to
+        <span> send BTC</span>
+        easily
+    </h1>
+    <input class="filterBy-input" [(ngModel)]="filterBy.term" (ngModelChange)="onSetFilter()" type="text" name="term"
+        id="term" placeholder="Search a contact">
 </form>

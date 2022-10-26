@@ -1,0 +1,97 @@
+@import '../../../assets/styles/setup/functions';
+@import '../../../assets/styles/setup/mixins';
+@import '../../../assets/styles/setup/vars';
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .primary-title {
+        font-size: rem(27px);
+        margin-block-end: rem(20px);
+        text-align: center;
+    }
+
+    .secondary-title {
+        font-size: rem(23px);
+        margin-block-end: rem(50px);
+        text-align: center;
+
+        span {
+            font-size: rem(23px);
+            color: var(--secondary-text-color)
+        }
+    }
+
+    .data {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 0 rem(25px) rem(10px);
+        padding: rem(12px);
+        border-radius: rem(10px);
+        width: 100%;
+
+        @include for-wide-layout {
+            flex-direction: row;
+        }
+
+        .funds {
+            display: flex;
+            flex-direction: column;
+
+            @include for-normal-layout {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            @include for-wide-layout {
+                flex-direction: column;
+            }
+
+            .balance {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-block-end: rem(40px);
+
+                @include for-normal-layout {
+                    align-items: flex-start;
+                    margin: 0;
+                }
+
+                @include for-wide-layout {
+                    margin-block-end: rem(40px);
+                }
+
+                .btc {
+                    font-size: rem(20px);
+                }
+
+                >* {
+                    span {
+                        color: var(--secondary-text-color);
+                        margin-inline-start: rem(3px);
+                    }
+                }
+
+                >*:not(:first-child) {
+                    font-size: rem(18px);
+                }
+
+                >*:not(:last-child) {
+                    margin-block-end: rem(8px);
+                }
+            }
+        }
+    }
+
+    .market-price-history {
+        display: none;
+
+        @include for-normal-layout {
+            display: block;
+        }
+    }
+}
