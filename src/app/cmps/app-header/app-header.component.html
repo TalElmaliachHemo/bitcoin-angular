@@ -1,12 +1,18 @@
-<header class="app-header main-layout">
+<header class="app-header main-layout" [class.menu-opened]="menuClass">
     <span class="logo">
         <a routerLink="/" routerLinkActive="active"> Mr. BitCoin </a>
     </span>
-    <nav class="nav-app" v-if="!isLoginSignupPath">
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
-        <a routerLink="/contact" routerLinkActive="active">Contacts</a>
-        <a routerLink="/statistic" routerLinkActive="active">Statistics</a>
+    <nav class="nav-app">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">Home</a>
+        <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contacts</a>
+        <a routerLink="/statistic" routerLinkActive="active" (click)="closeMenu()">Statistics</a>
         <span class="separator">|</span>
-        <button class="btn-logout">Logout</button>
+        <button class="btn-logout" (click)="logout()">Logout</button>
     </nav>
+    <button class="toggle-menu" (click)="openMenu()">
+        ☰
+    </button>
+    <button class="btn-close-menu" (click)="closeMenu()">
+        X
+    </button>
 </header>

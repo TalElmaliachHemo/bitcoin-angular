@@ -44,4 +44,8 @@ export class UserService {
     this.storageService.saveToStorage('user', users)
     return user
   }
+
+  public logout() {
+    this.storageService.saveToStorage('loggedinUser', null)
+}
 }
