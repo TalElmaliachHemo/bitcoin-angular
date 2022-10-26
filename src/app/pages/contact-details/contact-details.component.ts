@@ -1,14 +1,15 @@
 import { Subscription } from 'rxjs';
 import { Contact } from './../../models/contact.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'contact-details',
   templateUrl: './contact-details.component.html',
-  styleUrls: ['./contact-details.component.scss']
+  styleUrls: ['./contact-details.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class ContactDetailsComponent implements OnInit {
+export class ContactDetailsComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute) { }
 
@@ -21,5 +22,9 @@ export class ContactDetailsComponent implements OnInit {
       if (contact) this.contact = contact
     })
   }
+
+  ngOnDestroy(): void {
+    this.paramsSubscription.unsubscribe()
+}
 
 }
