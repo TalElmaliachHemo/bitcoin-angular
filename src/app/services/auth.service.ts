@@ -11,7 +11,6 @@ export class AuthService {
 
   checkLoggedIn() {
     const user = this.userService.getUser()
-    console.log(user)
-    return of(!!user)
+    return !!user
   }
 }

@@ -1,0 +1,13 @@
+<section class="add-contact">
+    <h1 class="title">
+        <span>Add</span>
+        more friends to your contact list !
+    </h1>
+    <form class="add-contact-form" [formGroup]="form">
+        <input formControlName="name" class="contact-name" placeholder="contact fullname" type="text" />
+        <input formControlName="email" class="contact-email" placeholder="contact email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" />
+        <input formControlName="phone" placeholder="contact phone" type="text" />
+        <button class="btn-add" [disabled]="form.pristine" (click)="onAddContact()">Add</button>
+    </form>
+</section>

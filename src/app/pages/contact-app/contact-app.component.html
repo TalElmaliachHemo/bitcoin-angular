@@ -1,4 +1,7 @@
 <section class="contact-app">
-    <contact-filter></contact-filter>
-    <contact-list [contacts]="contacts" (remove)="onRemoveContact($event)" ></contact-list>
+    <div class="contact-actions">
+        <contact-filter></contact-filter>
+        <add-contact></add-contact>
+    </div>
+    <contact-list [contacts]="contacts" (remove)="onRemoveContact($event)"></contact-list>
 </section>

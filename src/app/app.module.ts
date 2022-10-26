@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-root/app.component';
 import { ContactAppComponent } from './pages/contact-app/contact-app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContactListComponent } from './cmps/contact-list/contact-list.component';
 import { ContactPreviewComponent } from './cmps/contact-preview/contact-preview.component';
 import { AppHeaderComponent } from './cmps/app-header/app-header.component';
@@ -14,6 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { NaturalTypePipe } from './pipes/natural-type.pipe';
 import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
 import { ContactDetailsComponent } from './pages/contact-details/contact-details.component';
+import { AddContactComponent } from './cmps/add-contact/add-contact.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +27,15 @@ import { ContactDetailsComponent } from './pages/contact-details/contact-details
     HomeComponent,
     NaturalTypePipe,
     LoginSignupComponent,
-    ContactDetailsComponent
+    ContactDetailsComponent,
+    AddContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -160,7 +160,7 @@ export class ContactService {
     if (filterBy && filterBy.term) {
       contacts = this._filter(contacts, filterBy.term)
     }
-    this._contacts$.next(this._sort(contacts))
+    this._contacts$.next(contacts)
   }
 
 
@@ -188,7 +188,7 @@ export class ContactService {
     //mock the server work
     this._contactsDb = this._contactsDb.map(c => contact._id === c._id ? contact : c)
     // change the observable data in the service - let all the subscribers know
-    this._contacts$.next(this._sort(this._contactsDb))
+    this._contacts$.next([...this._contactsDb])
   }
 
   private _addContact(contact: Contact) {
@@ -196,7 +196,7 @@ export class ContactService {
     const newContact = new Contact(contact.name, contact.email, contact.phone);
     if (typeof newContact.setId === 'function') newContact.setId(getRandomId());
     this._contactsDb.push(newContact)
-    this._contacts$.next(this._sort(this._contactsDb))
+    this._contacts$.next([...this._contactsDb])
   }
 
   private _sort(contacts: Contact[]): Contact[] {

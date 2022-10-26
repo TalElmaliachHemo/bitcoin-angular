@@ -7,7 +7,7 @@ export class StorageService {
 
   constructor() { }
 
-  public saveToStorage(key: string, value: any) {
+  public saveToStorage<T>(key: string, value: T) {
     localStorage.setItem(key, JSON.stringify(value))
   }
   public loadFromStorage(key: string) {

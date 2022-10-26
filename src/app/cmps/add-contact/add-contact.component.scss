@@ -1,0 +1,61 @@
+@import '../../../assets/styles/setup/functions';
+@import '../../../assets/styles/setup/mixins';
+@import '../../../assets/styles/setup/vars';
+
+
+.add-contact {
+    display: none;
+
+    @include for-normal-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .title {
+        font-size: rem(24px);
+        margin-block-end: rem(20px);
+
+        @include for-normal-layout {
+            width: rem(370px);
+        }
+
+        @include for-wide-layout {
+            width: rem(430px);
+        }
+
+        span {
+            color: var(--secondary-text-color);
+        }
+    }
+
+    .add-contact-form {
+        display: flex;
+        flex-direction: column;
+
+        >* {
+            padding: rem(7px);
+
+            &:not(:last-child) {
+                border-radius: rem(4px);
+                margin-block-end: rem(20px);
+            }
+
+            @include for-normal-layout {
+                width: rem(370px);
+            }
+
+            @include for-wide-layout {
+                width: rem(430px);
+            }
+        }
+
+        .btn-add {
+            background-color: transparent;
+            color: var(--primary-text-color);
+            border-color: var(--primary-text-color);
+            font-family: roboto;
+            font-size: rem(16px);
+            cursor: pointer;
+        }
+    }
+}

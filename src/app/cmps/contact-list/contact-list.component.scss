@@ -4,7 +4,6 @@
 
 .contact-list {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     flex-grow: 1;
 
@@ -15,7 +14,7 @@
 
         // scrollbar
         &::-webkit-scrollbar {
-            width: 10px;
+            width: rem(10px);
         }
 
         &::-webkit-scrollbar-track {
