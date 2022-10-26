@@ -15,6 +15,7 @@ import { NaturalTypePipe } from './pipes/natural-type.pipe';
 import { LoginSignupComponent } from './pages/login-signup/login-signup.component';
 import { ContactDetailsComponent } from './pages/contact-details/contact-details.component';
 import { AddContactComponent } from './cmps/add-contact/add-contact.component';
+import { StatisticAppComponent } from './pages/statistic-app/statistic-app.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AddContactComponent } from './cmps/add-contact/add-contact.component';
     NaturalTypePipe,
     LoginSignupComponent,
     ContactDetailsComponent,
-    AddContactComponent
+    AddContactComponent,
+    StatisticAppComponent
   ],
   imports: [
     BrowserModule,

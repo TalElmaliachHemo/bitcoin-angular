@@ -1,0 +1,15 @@
+@import '../../../assets/styles/setup/functions';
+@import '../../../assets/styles/setup/mixins';
+
+.statistics-app {
+    display: flex;
+    flex-direction: column;
+
+    @include for-normal-layout {
+        padding: rem(10px) rem(100px);
+    }
+
+    >*:not(:last-child) {
+        margin-block-end: rem(40px);
+    }
+}
