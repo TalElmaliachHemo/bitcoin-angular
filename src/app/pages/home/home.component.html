@@ -1,18 +1,17 @@
 <section class="home main-layout">
-    <h1 class="primary-title">{{ greeting | naturalType }} </h1>
-    <h4 class="secondary-title">
-      Start to
-      <span>Send and Exchange </span>
-      with Mr. BitCoin free and secure BTC app
-    </h4>
-    <main class="data">
-      <div class="funds">
-        <div class="balance">
-          <span class="btc"
-            >{{ user.name }}'s balance:
-            <span> ₿{{ user.coins }} </span>
-          </span>
-          <!-- <span class="usd"
+  <h1 class="primary-title">{{ greeting | naturalType }} </h1>
+  <h4 class="secondary-title">
+    Start to
+    <span>Send and Exchange </span>
+    with Mr. BitCoin free and secure BTC app
+  </h4>
+  <main class="data">
+    <div class="funds">
+      <div class="balance">
+        <span class="btc">{{ user.name }}'s balance:
+          <span> ₿{{ user.balance }} </span>
+        </span>
+        <!-- <span class="usd"
             >USD:
             <span> ${{ BTCtoUSD }}</span>
           </span>
@@ -20,7 +19,8 @@
             >EUR:
             <span> €{{ BTCtoEUR }}</span>
           </span> -->
-        </div>
       </div>
-    </main>
-  </section>
+      <transaction-list [transactions]="transactions"></transaction-list>
+    </div>
+  </main>
+</section>

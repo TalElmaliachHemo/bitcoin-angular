@@ -2,14 +2,8 @@
 @import '../../../assets/styles/setup/mixins';
 @import '../../../assets/styles/setup/vars';
 
-.contact-list {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-
+:host {
     @include for-narrow-layout {
-        justify-content: flex-start;
-        padding-inline-end: rem(17px);
         overflow: auto;
 
         // scrollbar
@@ -33,18 +27,29 @@
         }
     }
 
-    @include for-normal-layout {
-        justify-content: flex-end;
-    }
+    .contact-list {
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
 
-    ul {
-        li {
-            border-block-end: 1px solid white;
-            position: relative;
+        @include for-narrow-layout {
+            justify-content: flex-start;
+            padding-inline-end: rem(17px);
         }
 
-        >*:not(:last-child) {
-            margin-block-end: rem(10px);
+        @include for-normal-layout {
+            justify-content: flex-end;
+        }
+
+        ul {
+            li {
+                border-block-end: 1px solid white;
+                position: relative;
+            }
+
+            >*:not(:last-child) {
+                margin-block-end: rem(10px);
+            }
         }
     }
 }

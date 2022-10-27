@@ -1,0 +1,40 @@
+@import '../../../assets/styles/setup/functions';
+@import '../../../assets/styles/setup/mixins';
+@import '../../../assets/styles/setup/vars';
+
+.transaction-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    height: rem(55px);
+    width: rem(300px);
+    border-block-end: 1px solid;
+    margin-block-end: rem(15px);
+
+    @include for-narrow-layout {
+        width: rem(470px);
+    }
+
+    @include for-wide-layout {
+        width: rem(410px);
+    }
+
+    .transaction-date {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        span {
+            margin-inline-start: rem(5px);
+        }
+    }
+
+    .transaction-to {
+        font-size: rem(20px);
+    }
+
+    .transaction-amount {
+        color: var(--secondary-text-color);
+    }
+}

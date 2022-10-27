@@ -1,0 +1,7 @@
+<section class="transaction-preview">
+    <span class="transaction-date">{{ transaction.at | date: 'dd/MM/yyyy' }}
+        <span>{{ transaction.at | date: 'hh:mm' }}</span>
+    </span>
+    <span class="transaction-to">To {{ transaction.to }}</span>
+    <span class="transaction-amount">BTC {{ transaction.amount }}</span>
+</section>

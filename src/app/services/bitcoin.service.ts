@@ -16,11 +16,16 @@ export class BitcoinService {
       return of(this.storageService.loadFromStorage('rate'))
     else {
       const apiStr = 'https://blockchain.info/ticker'
-      const rate = this.http.get(apiStr).pipe(map(res => {
-        return res
+      const rateMap = this.http.get(apiStr).pipe(map(res => {
+        console.log(res)
+        const rate = {
+          usd: (res as { USD: { last: number } }).USD.last,
+          eur: (res as { EUR: { last: number } }).EUR.last
+        }
+        return rate
       }))
-      this.storageService.saveToStorage('rate', rate)
-      return rate
+      this.storageService.saveToStorage('rate', rateMap)
+      return rateMap
     }
   }
 
