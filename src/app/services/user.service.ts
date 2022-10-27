@@ -1,21 +1,17 @@
-import { Transaction } from './../models/transaction.model';
+import { BehaviorSubject, of, ReplaySubject } from 'rxjs';
 import { Contact } from './../models/contact.model';
 import { User } from 'src/app/models/user.model';
 import { UtilService } from './util.service';
 import { StorageService } from './storage.service';
 import { Injectable } from '@angular/core';
 
-const USER = {
-  _id: 'u101',
-  name: "Ochoa Hyde",
-  coins: 100,
-  moves: []
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  private _users$ = new BehaviorSubject<User[]>([])
+  public users$ = this._users$.asObservable()
 
   constructor(private storageService: StorageService,
     private utilService: UtilService) { }

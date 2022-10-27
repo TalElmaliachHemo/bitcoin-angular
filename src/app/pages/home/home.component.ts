@@ -2,7 +2,7 @@ import { Transaction } from './../../models/transaction.model';
 import { lastValueFrom } from 'rxjs';
 import { BitcoinService } from './../../services/bitcoin.service';
 import { UtilService } from './../../services/util.service';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,7 +10,6 @@ import { UserService } from 'src/app/services/user.service';
   selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
 
@@ -28,6 +27,7 @@ export class HomeComponent implements OnInit {
     this.greeting = `Hello ${this.user.name}, ${this.utilService.getGreeting()} !`
 
     this.rate = await lastValueFrom(this.bitcoinService.getRate())
+
     const transactions = this.userService.getUser().transactions
     if (transactions.length > 3) this.transactions = transactions.slice(0, 3);
     else this.transactions = transactions;
