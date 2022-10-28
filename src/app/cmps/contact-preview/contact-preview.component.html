@@ -2,8 +2,8 @@
     <button class="btn-remove" (click)="onRemoveContact()">X</button>
     <img [src]="contact.img" alt="contact-img" />
     <div class="contact-data">
-        <span class="contact-name">{{contact.name}}</span>
-        <span class="contact-email">{{contact.email}}</span>
-        <span class="contact-phone">{{contact.phone}}</span>
+        <input class="contact-name" (click)="onClickEvent($event)" (blur)="onSaveContact()" [(ngModel)]="contact.name" type="text" />
+        <input class="contact-email" (click)="onClickEvent($event)" (blur)="onSaveContact()" [(ngModel)]="contact.email" type="email" />
+        <input class="contact-phone" (click)="onClickEvent($event)" (blur)="onSaveContact()" [(ngModel)]="contact.phone" type="text" />
     </div>
 </section>

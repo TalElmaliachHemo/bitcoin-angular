@@ -187,7 +187,7 @@ export class ContactService {
   private _update(contact: Contact) {
     let contacts = this.storageService.loadFromStorage('contact')
     contacts = contacts.map((c: Contact) => contact._id === c._id ? contact : c)
-    this._contacts$.next([contacts])
+    this._contacts$.next([...contacts])
     this.storageService.saveToStorage('contact', contacts)
   }
 
