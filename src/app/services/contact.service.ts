@@ -1,3 +1,4 @@
+import { StorageService } from './storage.service';
 import { contactFilter } from './../models/contact.model';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
@@ -143,8 +144,6 @@ const CONTACTS = [
   providedIn: 'root'
 })
 export class ContactService {
-
-  //mock the server
   private _contactsDb: Contact[] = CONTACTS;
 
   private _contacts$ = new BehaviorSubject<Contact[]>([])
@@ -153,50 +152,53 @@ export class ContactService {
   private _filterBy$ = new BehaviorSubject<contactFilter>({ term: '' });
   public filterBy$ = this._filterBy$.asObservable()
 
-  public loadContacts(): void {
+  constructor(private storageService: StorageService) { }
 
+  public loadContacts(): void {
     const filterBy = this._filterBy$.value
-    let contacts = this._contactsDb;
+    let contacts = this.storageService.loadFromStorage('contact') || null
+    if (!contacts) {
+      contacts = this._contactsDb;
+      this.storageService.saveToStorage('contact', contacts)
+    }
     if (filterBy && filterBy.term) {
       contacts = this._filter(contacts, filterBy.term)
     }
     this._contacts$.next(contacts)
   }
 
-
-  public getContactById(id: string): Observable<Contact> {
-    //mock the server work
-    const contact = this._contactsDb.find(contact => contact._id === id)
-
-    //return an observable
+  public getById(id: string): Observable<Contact> {
+    let contacts = this.storageService.loadFromStorage('contact')
+    const contact = contacts.find((contact: Contact) => contact._id === id)
     return contact ? of(contact) : throwError(() => `Contact id ${id} not found!`)
   }
 
-  public deleteContact(id: string) {
-    //mock the server work
-    this._contactsDb = this._contactsDb.filter(contact => contact._id !== id)
-
-    // change the observable data in the service - let all the subscribers know
-    this._contacts$.next(this._contactsDb)
+  public remove(id: string) {
+    let contacts = this.storageService.loadFromStorage('contact')
+    contacts = contacts.filter((contact: Contact) => contact._id !== id)
+    this._contacts$.next([...contacts])
+    this.storageService.saveToStorage('contact', contacts)
   }
 
-  public saveContact(contact: Contact) {
-    return contact._id ? this._updateContact(contact) : this._addContact(contact)
+  public save(contact: Contact) {
+    return contact._id ? this._update(contact) : this._add(contact)
   }
 
-  private _updateContact(contact: Contact) {
-    //mock the server work
-    this._contactsDb = this._contactsDb.map(c => contact._id === c._id ? contact : c)
-    // change the observable data in the service - let all the subscribers know
-    this._contacts$.next([...this._contactsDb])
+  private _update(contact: Contact) {
+    let contacts = this.storageService.loadFromStorage('contact')
+    contacts = contacts.map((c: Contact) => contact._id === c._id ? contact : c)
+    this._contacts$.next([contacts])
+    this.storageService.saveToStorage('contact', contacts)
   }
 
-  private _addContact(contact: Contact) {
-    //mock the server work
-    const newContact = new Contact(contact.name, contact.email, contact.phone);
-    if (typeof newContact.setId === 'function') newContact.setId(getRandomId());
-    this._contactsDb.push(newContact)
-    this._contacts$.next([...this._contactsDb])
+  private _add({ name, email, phone }: Contact) {
+    let contacts = this.storageService.loadFromStorage('contact')
+    const newContact = { _id: '', name, email, phone, img: '' }
+    newContact.img = `https://robohash.org/${newContact.name}/?set=set5`
+    newContact._id = getRandomId();
+    contacts.unshift(newContact)
+    this._contacts$.next([...contacts])
+    this.storageService.saveToStorage('contact', contacts)
   }
 
   private _sort(contacts: Contact[]): Contact[] {

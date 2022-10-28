@@ -32,4 +32,14 @@ export class HomeComponent implements OnInit {
     if (transactions.length > 3) this.transactions = transactions.slice(0, 3);
     else this.transactions = transactions;
   }
+
+  get BTCtoUSD() {
+    if (!this.rate) return
+    return this.user.balance * (this.rate as { usd: number }).usd
+  }
+
+  get BTCtoEUR() {
+    if (!this.rate) return
+    return this.user.balance * (this.rate as { eur: number }).eur
+  }
 }

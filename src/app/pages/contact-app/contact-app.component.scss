@@ -4,7 +4,7 @@
 .contact-app {
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - rem(155px));
+    height: calc(100vh - rem(155px));
 
     @include for-narrow-layout {
         align-items: center;

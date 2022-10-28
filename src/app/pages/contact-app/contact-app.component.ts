@@ -24,6 +24,6 @@ export class ContactAppComponent implements OnInit {
   }
 
   onRemoveContact(contactId: string) {
-    this.contactService.deleteContact(contactId)
+    this.contactService.remove(contactId)
   }
 }
