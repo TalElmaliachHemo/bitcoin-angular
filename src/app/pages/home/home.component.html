@@ -20,6 +20,6 @@
       </div>
       <transaction-list [transactions]="transactions"></transaction-list>
     </div>
-    <chart *ngIf="marketPriceHistory" [labels]="labels" [data]="data" [description]="description"></chart>
+    <chart *ngIf="marketPriceHistory" class="market-price-history" [labels]="labels" [data]="data" [description]="description"></chart>
   </main>
 </section>

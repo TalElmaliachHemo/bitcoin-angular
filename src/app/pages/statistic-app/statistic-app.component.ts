@@ -1,12 +1,11 @@
 import { lastValueFrom } from 'rxjs';
 import { BitcoinService } from './../../services/bitcoin.service';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'statistic-app',
   templateUrl: './statistic-app.component.html',
-  styleUrls: ['./statistic-app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./statistic-app.component.scss']
 })
 export class StatisticAppComponent implements OnInit {
 
