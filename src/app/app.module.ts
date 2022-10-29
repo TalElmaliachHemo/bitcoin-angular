@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-root/app.component';
 import { ContactAppComponent } from './pages/contact-app/contact-app.component';
@@ -19,6 +18,8 @@ import { StatisticAppComponent } from './pages/statistic-app/statistic-app.compo
 import { TransactionListComponent } from './cmps/transaction-list/transaction-list.component';
 import { TransactionPreviewComponent } from './cmps/transaction-preview/transaction-preview.component';
 import { TransferFundsComponent } from './cmps/transfer-funds/transfer-funds.component';
+import { NgChartsModule } from 'ng2-charts';
+import { ChartComponent } from './cmps/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -36,14 +37,16 @@ import { TransferFundsComponent } from './cmps/transfer-funds/transfer-funds.com
     StatisticAppComponent,
     TransactionListComponent,
     TransactionPreviewComponent,
-    TransferFundsComponent
+    TransferFundsComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

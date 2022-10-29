@@ -1,3 +1,5 @@
+import { lastValueFrom } from 'rxjs';
+import { BitcoinService } from './../../services/bitcoin.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatisticAppComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bitcoinService: BitcoinService) { }
 
-  ngOnInit(): void {
+  marketPriceHistory: object | null = null
+  labels: string[] = []
+  data: Array<number> = []
+  description: string = ''
+
+  async ngOnInit() {
+    const historyPrice = await lastValueFrom(this.bitcoinService.getMarketPriceHistory())
+
+    this.marketPriceHistory = historyPrice
+    this.description = historyPrice.description
+    this.labels = (this.marketPriceHistory as { values: { x: string }[] }).values.map((value) => value.x);
+    this.data = (this.marketPriceHistory as { values: Array<{ y: number }> }).values.map((value) => value.y);
   }
-
 }
