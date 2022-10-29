@@ -11,16 +11,15 @@
         <span class="btc">{{ user.name }}'s balance:
           <span> ₿{{ user.balance }} </span>
         </span>
-        <!-- <span class="usd"
-            >USD:
-            <span> ${{ BTCtoUSD }}</span>
-          </span>
-          <span class="eur"
-            >EUR:
-            <span> €{{ BTCtoEUR }}</span>
-          </span> -->
+        <span class="usd">USD:
+          <span>{{ BTCtoUSD | currency }}</span>
+        </span>
+        <span class="eur">EUR:
+          <span>{{ BTCtoEUR | currency: 'EUR' }}</span>
+        </span>
       </div>
       <transaction-list [transactions]="transactions"></transaction-list>
     </div>
+    <chart *ngIf="marketPriceHistory" [labels]="labels" [data]="data" [description]="description"></chart>
   </main>
 </section>

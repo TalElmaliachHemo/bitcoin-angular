@@ -22,6 +22,7 @@ export class AddContactComponent {
 
   onAddContact() {
     const newContact = this.form.value
-    this.contactService.saveContact(newContact)
+    this.contactService.save(newContact)
+    this.form.reset()
   }
 }

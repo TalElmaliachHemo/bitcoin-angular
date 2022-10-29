@@ -4,6 +4,6 @@
     <span class="contact-email">Email: {{ contact.email }}</span>
     <span class="contact-phone">Phone: {{ contact.phone }}</span>
     <transaction-list [transactions]="transactions"></transaction-list>
-    <transfer-funds [contact]="contact"></transfer-funds>
+    <transfer-funds [contact]="contact" (transferFunds)="onTransferFunds($event)"></transfer-funds>
     <button class="btn-back" [routerLink]="['/contact']">Back</button>
 </section>

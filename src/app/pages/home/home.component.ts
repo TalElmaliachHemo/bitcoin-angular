@@ -17,6 +17,10 @@ export class HomeComponent implements OnInit {
     private utilService: UtilService,
     private bitcoinService: BitcoinService) { }
 
+  marketPriceHistory: object | null = null
+  labels: string[] = []
+  data: Array<number> = []
+  description: string = ''
   user: User = {} as User
   greeting: string = ''
   rate!: object
@@ -31,5 +35,22 @@ export class HomeComponent implements OnInit {
     const transactions = this.userService.getUser().transactions
     if (transactions.length > 3) this.transactions = transactions.slice(0, 3);
     else this.transactions = transactions;
+
+    const historyPrice = await lastValueFrom(this.bitcoinService.getMarketPriceHistory())
+
+    this.marketPriceHistory = historyPrice
+    this.description = historyPrice.description
+    this.labels = (this.marketPriceHistory as { values: { x: string }[] }).values.map((value) => value.x);
+    this.data = (this.marketPriceHistory as { values: Array<{ y: number }> }).values.map((value) => value.y);
+  }
+
+  get BTCtoUSD() {
+    if (!this.rate) return
+    return this.user.balance * (this.rate as { usd: number }).usd
+  }
+
+  get BTCtoEUR() {
+    if (!this.rate) return
+    return this.user.balance * (this.rate as { eur: number }).eur
   }
 }

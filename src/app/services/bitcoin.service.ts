@@ -12,45 +12,71 @@ export class BitcoinService {
     private storageService: StorageService) { }
 
   public getRate(): Observable<object> {
-    if (this.storageService.loadFromStorage('rate'))
-      return of(this.storageService.loadFromStorage('rate'))
+    const rateFromStorage = this.storageService.loadFromStorage('rate')
+    if (rateFromStorage)
+      return of(rateFromStorage)
     else {
       const apiStr = 'https://blockchain.info/ticker'
-      const rateMap = this.http.get(apiStr).pipe(map(res => {
-        console.log(res)
-        const rate = {
+      const rate = this.http.get(apiStr).pipe(map(res => {
+        const cleanRateMap = {
           usd: (res as { USD: { last: number } }).USD.last,
           eur: (res as { EUR: { last: number } }).EUR.last
         }
-        return rate
+        this.storageService.saveToStorage('rate', cleanRateMap)
+        return cleanRateMap
       }))
-      this.storageService.saveToStorage('rate', rateMap)
-      return rateMap
+      return rate
     }
   }
 
   public getMarketPriceHistory() {
-    if (this.storageService.loadFromStorage('market-price-history'))
-      return of(this.storageService.loadFromStorage('market-price-history'))
+    const priceHistoryFromStorage = this.storageService.loadFromStorage('market-price-history')
+    if (priceHistoryFromStorage)
+      return of(priceHistoryFromStorage)
     else {
       const apiStr = 'https://api.blockchain.info/charts/market-price?timespan=3months&format=json&cors=true'
       const priceHistory = this.http.get(apiStr).pipe(map(res => {
-        return res
+        const cleanPriceHistoryMap = {
+          name: (res as { name: string }).name,
+          unit: (res as { unit: string }).unit,
+          description: (res as { description: string }).description,
+          values: (res as { values: Array<{ x: number, y: number }> }).values.map(value => {
+            const date = (new Date(value.x * 1000)).toLocaleDateString("en-US");
+            return {
+              x: date,
+              y: value.y
+            }
+          })
+        }
+        this.storageService.saveToStorage('market-price-history', cleanPriceHistoryMap)
+        return cleanPriceHistoryMap
       }))
-      this.storageService.saveToStorage('market-price-history', priceHistory)
       return priceHistory
     }
   }
 
   public getAvgBlockSize() {
-    if (this.storageService.loadFromStorage('avg-block-size'))
-      return this.storageService.loadFromStorage('avg-block-size')
+    const avgBlockSizeFromStorage = this.storageService.loadFromStorage('avg-block-size')
+    if (avgBlockSizeFromStorage)
+      return of(avgBlockSizeFromStorage)
     else {
       const apiStr = 'https://api.blockchain.info/charts/avg-block-size?timespan=3months&format=json&cors=true'
       const avgBlockSize = this.http.get(apiStr).pipe(map(res => {
-        return res
+        const cleanAvgBlockSize = {
+          name: (res as { name: string }).name,
+          unit: (res as { unit: string }).unit,
+          description: (res as { description: string }).description,
+          values: (res as { values: Array<{ x: number, y: number }> }).values.map(value => {
+            const date = (new Date(value.x * 1000)).toLocaleDateString("en-US");
+            return {
+              x: date,
+              y: value.y
+            }
+          })
+        }
+        this.storageService.saveToStorage('avg-block-size', cleanAvgBlockSize)
+        return cleanAvgBlockSize
       }))
-      this.storageService.saveToStorage('avg-block-size', avgBlockSize)
       return avgBlockSize
     }
   }

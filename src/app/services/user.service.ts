@@ -1,4 +1,4 @@
-import { BehaviorSubject, of, ReplaySubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Contact } from './../models/contact.model';
 import { User } from 'src/app/models/user.model';
 import { UtilService } from './util.service';
@@ -12,6 +12,9 @@ export class UserService {
 
   private _users$ = new BehaviorSubject<User[]>([])
   public users$ = this._users$.asObservable()
+
+  private _loggedinUser$ = new BehaviorSubject<User | null>(null)
+  public loggedinUser$ = this._loggedinUser$.asObservable()
 
   constructor(private storageService: StorageService,
     private utilService: UtilService) { }

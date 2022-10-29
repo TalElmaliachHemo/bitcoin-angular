@@ -17,6 +17,6 @@ export class ContactResolver implements Resolve<Observable<void | Contact>> {
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const id = route.params['id']
         // return this.contactService.getById(id).pipe(delay(1000))
-        return this.contactService.getContactById(id)
+        return this.contactService.getById(id)
     }
 }
