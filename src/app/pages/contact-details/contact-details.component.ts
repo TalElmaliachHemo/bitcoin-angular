@@ -2,13 +2,14 @@ import { UserService } from 'src/app/services/user.service';
 import { Transaction } from './../../models/transaction.model';
 import { Subscription } from 'rxjs';
 import { Contact } from './../../models/contact.model';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'contact-details',
   templateUrl: './contact-details.component.html',
-  styleUrls: ['./contact-details.component.scss']
+  styleUrls: ['./contact-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactDetailsComponent implements OnInit, OnDestroy {
 
@@ -34,7 +35,7 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
   }
 
   onTransferFunds(transaction: Transaction) {
-    this.transactions.push(transaction)
+    this.transactions.unshift(transaction)
   }
 
 }

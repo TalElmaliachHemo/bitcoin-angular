@@ -1,11 +1,12 @@
 import { ContactService } from 'src/app/services/contact.service';
 import { Contact } from 'src/app/models/contact.model';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'contact-preview',
   templateUrl: './contact-preview.component.html',
-  styleUrls: ['./contact-preview.component.scss']
+  styleUrls: ['./contact-preview.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactPreviewComponent {
 
