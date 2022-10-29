@@ -12,16 +12,28 @@ export class StatisticAppComponent implements OnInit {
   constructor(private bitcoinService: BitcoinService) { }
 
   marketPriceHistory: object | null = null
-  labels: string[] = []
-  data: Array<number> = []
-  description: string = ''
+  priceHistoryLabels: string[] = []
+  priceHistoryData: Array<number> = []
+  priceHistoryDescription: string = ''
+
+  avgBlockSize: object | null = null
+  avgBlockSizeLabels: string[] = []
+  avgBlockSizeData: Array<number> = []
+  avgBlockSizeDescription: string = ''
 
   async ngOnInit() {
     const historyPrice = await lastValueFrom(this.bitcoinService.getMarketPriceHistory())
 
     this.marketPriceHistory = historyPrice
-    this.description = historyPrice.description
-    this.labels = (this.marketPriceHistory as { values: { x: string }[] }).values.map((value) => value.x);
-    this.data = (this.marketPriceHistory as { values: Array<{ y: number }> }).values.map((value) => value.y);
+    this.priceHistoryDescription = historyPrice.description
+    this.priceHistoryLabels = (this.marketPriceHistory as { values: { x: string }[] }).values.map((value) => value.x);
+    this.priceHistoryData = (this.marketPriceHistory as { values: Array<{ y: number }> }).values.map((value) => value.y);
+
+    const avgBlockSize = await lastValueFrom(this.bitcoinService.getAvgBlockSize())
+    console.log(avgBlockSize)
+    this.avgBlockSize = avgBlockSize as object
+    this.avgBlockSizeDescription = (avgBlockSize! as { description: string }).description
+    this.avgBlockSizeLabels = (this.avgBlockSize as { values: { x: string }[] }).values.map((value) => value.x);
+    this.avgBlockSizeData = (this.avgBlockSize as { values: Array<{ y: number }> }).values.map((value) => value.y);
   }
 }

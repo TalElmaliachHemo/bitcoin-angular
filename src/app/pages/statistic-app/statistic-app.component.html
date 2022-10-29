@@ -1,3 +1,4 @@
 <section class="statistics-app main-layout">
-    <chart *ngIf="marketPriceHistory" [labels]="labels" [data]="data" [description]="description"></chart>
+    <chart *ngIf="marketPriceHistory" [labels]="priceHistoryLabels" [data]="priceHistoryData" [description]="priceHistoryDescription"></chart>
+    <chart *ngIf="avgBlockSize" [labels]="avgBlockSizeLabels" [data]="avgBlockSizeData" [description]="avgBlockSizeDescription"></chart>
 </section>

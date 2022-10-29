@@ -1,4 +1,3 @@
-import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { Transaction } from './../../models/transaction.model';
 import { Subscription } from 'rxjs';
@@ -32,6 +31,10 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.paramsSubscription.unsubscribe()
+  }
+
+  onTransferFunds(transaction: Transaction) {
+    this.transactions.push(transaction)
   }
 
 }
