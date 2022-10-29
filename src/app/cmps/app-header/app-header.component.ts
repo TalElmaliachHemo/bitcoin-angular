@@ -16,14 +16,19 @@ export class AppHeaderComponent {
 
   logout() {
     this.userService.logout()
+    this.closeMenu()
     this.router.navigate(['/login-signup'])
   }
 
   openMenu() {
     this.menuClass = true
   }
-
+  
   closeMenu() {
     this.menuClass = false
+  }
+
+  get isLoginSignupPath() {
+    return !(this.router.url === '/login-signup')
   }
 }

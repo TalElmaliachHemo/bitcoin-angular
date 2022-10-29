@@ -30,7 +30,6 @@ export class StatisticAppComponent implements OnInit {
     this.priceHistoryData = (this.marketPriceHistory as { values: Array<{ y: number }> }).values.map((value) => value.y);
 
     const avgBlockSize = await lastValueFrom(this.bitcoinService.getAvgBlockSize())
-    console.log(avgBlockSize)
     this.avgBlockSize = avgBlockSize as object
     this.avgBlockSizeDescription = (avgBlockSize! as { description: string }).description
     this.avgBlockSizeLabels = (this.avgBlockSize as { values: { x: string }[] }).values.map((value) => value.x);

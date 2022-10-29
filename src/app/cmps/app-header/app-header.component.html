@@ -2,17 +2,17 @@
     <span class="logo">
         <a routerLink="/" routerLinkActive="active"> Mr. BitCoin </a>
     </span>
-    <nav class="nav-app">
+    <nav class="nav-app" *ngIf="isLoginSignupPath">
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">Home</a>
         <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contacts</a>
         <a routerLink="/statistic" routerLinkActive="active" (click)="closeMenu()">Statistics</a>
         <span class="separator">|</span>
         <button class="btn-logout" (click)="logout()">Logout</button>
     </nav>
-    <button class="toggle-menu" (click)="openMenu()">
+    <button class="toggle-menu" *ngIf="isLoginSignupPath" (click)="openMenu()">
         ☰
     </button>
-    <button class="btn-close-menu" (click)="closeMenu()">
+    <button class="btn-close-menu" *ngIf="isLoginSignupPath" (click)="closeMenu()">
         X
     </button>
 </header>
