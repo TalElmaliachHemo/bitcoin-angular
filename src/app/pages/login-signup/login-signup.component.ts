@@ -1,12 +1,13 @@
 import { UserService } from 'src/app/services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-signup',
   templateUrl: './login-signup.component.html',
-  styleUrls: ['./login-signup.component.scss']
+  styleUrls: ['./login-signup.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginSignupComponent implements OnInit {
 

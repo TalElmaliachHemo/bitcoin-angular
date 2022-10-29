@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
@@ -6,7 +6,8 @@ import { ContactService } from 'src/app/services/contact.service';
 @Component({
   selector: 'contact-app',
   templateUrl: './contact-app.component.html',
-  styleUrls: ['./contact-app.component.scss']
+  styleUrls: ['./contact-app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactAppComponent implements OnInit {
 
