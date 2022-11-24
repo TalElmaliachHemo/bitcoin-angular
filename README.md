@@ -47,6 +47,7 @@ git clone https://github.com/TalElmaliachHemo/bitcoin-angular.git
 ```
 Open the terminal and enter the following line to run it locally on your computer:
 ```
+npm i
 npm start 
 ```
 Runs the app in the development mode.
